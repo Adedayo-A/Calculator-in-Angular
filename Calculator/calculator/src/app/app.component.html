@@ -9,14 +9,16 @@
         <div class="punch-keys-sect">
           <table style="width: 100%;">
             <tr>
-              <td class="key" colspan="3" (click)="reset()">AC</td>
+              <td class="key" colspan="3" (click)="reset()"> {{ btnClear }}</td>
               <td class="key" colspan="1" (click)="keyPress('/')">/</td>
+              <td class="key" (click)="power()" colspan="3">Power</td>
             </tr>
             <tr>
               <td class="key" (click)="keyPress('7')">7</td>  
               <td class="key" (click)="keyPress('8')">8</td>
               <td class="key" (click)="keyPress('9')">9</td>  
               <td class="key" (click)="keyPress('x')">x</td>
+              <td class="key" (click)="keyPress('%')">%</td>
             </tr>
             <tr>
               <td class="key" (click)="keyPress('4')">4</td>  
