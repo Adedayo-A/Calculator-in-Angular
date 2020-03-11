@@ -7,15 +7,17 @@
 
 .display-screen {
     background: lightgrey;
-    height: 15vh;
+    height: 35vh;
     padding: 5% !important;
     font-size: 4rem;
     text-align: right;
+    font-family: Courier, monospace;
     overflow: auto;
 }
 
 .punch-keys-sect {
     height: 67%;
+    background-color: blueviolet;
 }
 
 .key {
