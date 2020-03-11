@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="container-custom">
+        <div class="display-screen">
+          {{ mainText }}
+        </div>
+        <div class="punch-keys-sect">
+          <table style="width: 100%;">
+            <tr>
+              <td class="key" colspan="3" (click)="Clear()">AC</td>
+              <td class="key" colspan="1" (click)="keyPress('/')">/</td>
+            </tr>
+            <tr>
+              <td class="key" (click)="keyPress('7')">7</td>  
+              <td class="key" (click)="keyPress('8')">8</td>
+              <td class="key" (click)="keyPress('9')">9</td>  
+              <td class="key" (click)="keyPress('x')">x</td>
+            </tr>
+            <tr>
+              <td class="key" (click)="keyPress('4')">4</td>  
+              <td class="key" (click)="keyPress('5')">5</td>
+              <td class="key" (click)="keyPress('6')">6</td>  
+              <td class="key" (click)="keyPress('-')">-</td>
+            </tr>
+            <tr>
+              <td class="key" (click)="keyPress('3')">3</td>  
+              <td class="key" (click)="keyPress('2')">2</td>
+              <td class="key" (click)="keyPress('1')">1</td>  
+              <td class="key" (click)="keyPress('+')">+</td>
+            </tr>
+            <tr>
+              <td colspan="2" class="key" (click)="keyPress('0')">0</td>
+              <td class="key decimal" (click)="keyPress('.')">.</td>  
+              <td class="key equal" (click)="getAnswer()">=</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
