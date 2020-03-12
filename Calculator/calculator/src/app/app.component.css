@@ -1,39 +1,85 @@
-.container-custom {
-    background: orange;
-    margin-top: 5vh;
-    border: 3px solid black;
-    width: 100%;
+.container {
+    max-width: 1440px;
+    width: 35%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background: darkslategray;
+    filter: brightness(154%);
+}
+
+.msg-class {
+    font-size: 2rem;
+}
+
+.bigfont {
+    font-size: 4rem;
 }
 
 .display-screen {
-    background: lightgrey;
-    height: 35vh;
-    padding: 5% !important;
-    font-size: 4rem;
+    background:grey;
+    filter: brightness(127%);
+    color: black;
+    height: 10rem;
+    padding: 5%;
     text-align: right;
     font-family: Courier, monospace;
     overflow: auto;
+    border: 1px solid;
+    border-radius: 5px;
 }
 
 .punch-keys-sect {
-    height: 67%;
-    background-color: blueviolet;
+    width: 100%;
+    background-color: black;
+    filter: contrast(127%);
+    height: 23rem;
+    padding-top: 20px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.table-of-data {
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+.rows-data {
+    padding: 30px;
 }
 
 .key {
-    margin: 0;
-    height: 20%;
-    background: white;
-    color: black;
-    padding: 5%;
+    padding: 2%;
     font-size: 2rem;
     text-align: center;
     cursor: pointer;
     opacity: 0.9;
 }
 
-.keys:hover {
+/* .key:hover {
     opacity: 1;
+} */
+
+.numkey {
+    color: skyblue;
+}
+
+
+.power{
+    background-color: #Ff6f61ff;
+}
+
+.ackey {
+    color: red;
+}
+
+.opkey {
+    color: white;
+}
+
+.equalkey {
+    color: white;
+    background-color: orangered; 
 }
 
 .equal {
@@ -44,5 +90,4 @@
 
 .decimal {
     color: skyblue;
-    background-color: black; 
 }
