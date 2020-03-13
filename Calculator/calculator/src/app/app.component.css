@@ -1,15 +1,25 @@
+body{
+    padding-top: 25px;
+}
+
 .container {
+    margin-top: 10rem;
     max-width: 1440px;
-    width: 35%;
-    padding: 10px;
+    width: 25%;
+    padding: 25px;
     display: flex;
     flex-direction: column;
-    background: darkslategray;
-    filter: brightness(154%);
+    background: #2E2D33;
+    margin: auto;
+    border: 1px solid;
+    border-radius: 21px;
+    box-shadow: 1px -5px 8px 3px #ccc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .msg-class {
-    font-size: 2rem;
+    font-size: 2.6rem;
+    padding-top: 1rem;
 }
 
 .bigfont {
@@ -17,60 +27,74 @@
 }
 
 .display-screen {
-    background:grey;
-    filter: brightness(127%);
+    background-color: #9BAA76;
     color: black;
-    height: 10rem;
-    padding: 5%;
+    height: 5rem;
+    padding-right: 3%;
+    padding-top: 1rem;
     text-align: right;
-    font-family: Courier, monospace;
-    overflow: auto;
+    font-family: digital;
     border: 1px solid;
-    border-radius: 5px;
+    border-radius: 21px;
+    width: 91%;
+    margin: auto;
 }
 
 .punch-keys-sect {
-    width: 100%;
-    background-color: black;
-    filter: contrast(127%);
-    height: 23rem;
-    padding-top: 20px;
-    border: 1px solid;
-    border-radius: 5px;
+    margin-top: 10px;
 }
 
 .table-of-data {
-    width: 100%;
-    padding-bottom: 30px;
+    height: 20rem;
+    border-collapse: separate;
+    border-spacing: 15px 15px;
 }
 
-.rows-data {
-    padding: 30px;
+.space {
+    background-color: tomato;;
 }
 
 .key {
-    padding: 2%;
-    font-size: 2rem;
+    background-color:rgba(0,0,0,0.6);
+    color: white;
+    font-size: 1.2rem;
     text-align: center;
     cursor: pointer;
-    opacity: 0.9;
+    border: 1px solid;
+    border-radius: 5px;
+    column-width: 200px;
+    padding: 3px;
 }
 
-/* .key:hover {
+.border-black {
+    border-color: black;
+    font-size: 1.1rem;
+    padding: 7px;
+}
+
+.key:hover {
     opacity: 1;
-} */
+}
 
 .numkey {
-    color: skyblue;
+    background-color: #58595B;
+    border-color: transparent;
 }
 
+.power__btn {
+
+}
 
 .power{
-    background-color: #Ff6f61ff;
+    background-color: #841F27;
+    text-align: center;
+    border-color: transparent;
+    font-size: 1.2rem;
+    padding: 8px 0;
 }
 
-.ackey {
-    color: red;
+td {
+    text-align: center;
 }
 
 .opkey {
@@ -79,15 +103,7 @@
 
 .equalkey {
     color: white;
-    background-color: orangered; 
-}
-
-.equal {
-    color: white;
-    background-color: orange;
-    height: 15px;
-}
-
-.decimal {
-    color: skyblue;
+    background-color: orangered;
+    filter: brightness(231%);
+    border-color: transparent;
 }
