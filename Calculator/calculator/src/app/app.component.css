@@ -1,48 +1,109 @@
-.container-custom {
-    background: orange;
-    margin-top: 5vh;
-    border: 3px solid black;
-    width: 100%;
+body{
+    padding-top: 25px;
+}
+
+.container {
+    margin-top: 10rem;
+    max-width: 1440px;
+    width: 25%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    background: #2E2D33;
+    margin: auto;
+    border: 1px solid;
+    border-radius: 21px;
+    box-shadow: 1px -5px 8px 3px #ccc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.msg-class {
+    font-size: 2.6rem;
+    padding-top: 1rem;
+}
+
+.bigfont {
+    font-size: 4rem;
 }
 
 .display-screen {
-    background: lightgrey;
-    height: 35vh;
-    padding: 5% !important;
-    font-size: 4rem;
+    background-color: #9BAA76;
+    color: black;
+    height: 5rem;
+    padding-right: 3%;
+    padding-top: 1rem;
     text-align: right;
-    font-family: Courier, monospace;
-    overflow: auto;
+    font-family: digital;
+    border: 1px solid;
+    border-radius: 21px;
+    width: 91%;
+    margin: auto;
 }
 
 .punch-keys-sect {
-    height: 67%;
-    background-color: blueviolet;
+    margin-top: 10px;
+}
+
+.table-of-data {
+    height: 20rem;
+    border-collapse: separate;
+    border-spacing: 15px 15px;
+}
+
+.space {
+    background-color: tomato;;
 }
 
 .key {
-    margin: 0;
-    height: 20%;
-    background: white;
-    color: black;
-    padding: 5%;
-    font-size: 2rem;
+    background-color:rgba(0,0,0,0.6);
+    color: white;
+    font-size: 1.2rem;
     text-align: center;
     cursor: pointer;
-    opacity: 0.9;
+    border: 1px solid;
+    border-radius: 5px;
+    column-width: 200px;
+    padding: 3px;
 }
 
-.keys:hover {
+.border-black {
+    border-color: black;
+    font-size: 1.1rem;
+    padding: 7px;
+}
+
+.key:hover {
     opacity: 1;
 }
 
-.equal {
-    color: white;
-    background-color: orange;
-    height: 15px;
+.numkey {
+    background-color: #58595B;
+    border-color: transparent;
 }
 
-.decimal {
-    color: skyblue;
-    background-color: black; 
+.power__btn {
+
+}
+
+.power{
+    background-color: #841F27;
+    text-align: center;
+    border-color: transparent;
+    font-size: 1.2rem;
+    padding: 8px 0;
+}
+
+td {
+    text-align: center;
+}
+
+.opkey {
+    color: white;
+}
+
+.equalkey {
+    color: white;
+    background-color: orangered;
+    filter: brightness(231%);
+    border-color: transparent;
 }

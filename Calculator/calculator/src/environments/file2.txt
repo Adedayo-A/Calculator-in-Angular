@@ -94,8 +94,6 @@
 </div>
 
 
-
-
 .base {
     background: darkslategray;
     margin-top: 5vh;
