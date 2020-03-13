@@ -1,45 +1,46 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      <div class="container-custom">
-        <div class="display-screen">
-          {{ inputText }}
-        </div>
-        <div class="punch-keys-sect">
-          <table style="width: 100%;">
-            <tr>
-              <td class="key" colspan="3" (click)="reset()"> {{ btnClear }}</td>
-              <td class="key" colspan="1" (click)="keyPress('/')">/</td>
-              <td class="key" (click)="power()" colspan="3">Power</td>
-            </tr>
-            <tr>
-              <td class="key" (click)="keyPress('7')">7</td>  
-              <td class="key" (click)="keyPress('8')">8</td>
-              <td class="key" (click)="keyPress('9')">9</td>  
-              <td class="key" (click)="keyPress('x')">x</td>
-              <td class="key" (click)="keyPress('%')">%</td>
-            </tr>
-            <tr>
-              <td class="key" (click)="keyPress('4')">4</td>  
-              <td class="key" (click)="keyPress('5')">5</td>
-              <td class="key" (click)="keyPress('6')">6</td>  
-              <td class="key" (click)="keyPress('-')">-</td>
-            </tr>
-            <tr>
-              <td class="key" (click)="keyPress('3')">3</td>  
-              <td class="key" (click)="keyPress('2')">2</td>
-              <td class="key" (click)="keyPress('1')">1</td>  
-              <td class="key" (click)="keyPress('+')">+</td>
-            </tr>
-            <tr>
-              <td colspan="2" class="key" (click)="keyPress('0')">0</td>
-              <td class="key decimal" (click)="keyPress('.')">.</td>  
-              <td class="key equal" (click)="getAnswer()">=</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
+  <div [ngClass]="{'msg-class' : maxRange, 'bigfont' : !maxRange}" class="display-screen">
+    {{ inputText }}
+  </div>
+  <div class="punch-keys-sect">
+    <table class="table-of-data">
+      <tr class="rows-data">
+        <td class="key ackey" (click)="keyPress('AC')"> AC </td>
+        <td class="key opkey" (click)="keyPress('/')">/</td>
+        <td class="key opkey" (click)="keyPress('√')">√</td>
+        <td class="key power" colspan="2" (click)="power()">Power</td>
+        <td></td>
+      </tr>
+      <tr class="rows-data">
+        <td class="key numkey" (click)="keyPress('7')">7</td>
+        <td class="key numkey" (click)="keyPress('8')">8</td>
+        <td class="key numkey" (click)="keyPress('9')">9</td>
+        <td class="key opkey" (click)="keyPress('x')"> x </td>
+        <td class="key opkey" (click)="keyPress('cos')"> cos </td>
+
+      </tr>
+      <tr class="rows-data">
+        <td class="key numkey" (click)="keyPress('4')">4</td>  
+        <td class="key numkey" (click)="keyPress('5')">5</td>
+        <td class="key numkey" (click)="keyPress('6')">6</td>  
+        <td class="key opkey" (click)="keyPress('-')">-</td>
+        <td class="key opkey" (click)="keyPress('sine')"> sine </td>
+
+      </tr>
+      <tr class="rows-data">
+        <td class="key numkey" (click)="keyPress('3')">3</td>  
+        <td class="key numkey" (click)="keyPress('2')">2</td>
+        <td class="key numkey" (click)="keyPress('1')">1</td>  
+        <td class="key opkey" (click)="keyPress('+')">+</td>
+        <td class="key opkey" (click)="keyPress('tan')"> tan </td>
+
+      </tr>
+      <tr class="rows-data">
+        <td class="key numkey" (click)="keyPress('0')">0</td>
+        <td class="key decimal" (click)="keyPress('.')">.</td>  
+        <td class="key equalkey" (click)="getAnswer()">=</td>
+        <td class="key opkey" (click)="keyPress('%')"> % </td>
+      </tr>
+    </table>
   </div>
 </div>
