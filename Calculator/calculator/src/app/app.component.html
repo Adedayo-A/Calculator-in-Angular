@@ -1,5 +1,5 @@
 <div class="container">
-    <div [ngClass]="{'msg-class' : maxRange, 'bigfont' : !maxRange}" class="display-screen">
+    <div [ngClass]="{'msg-class' : maxRange, 'bigfont' : bigFont === true}" class="display-screen">
       {{ inputText }}
     </div>
     <div class="punch-keys-sect">
@@ -14,7 +14,7 @@
           <td class="key opkey border-black" (click)="keyPress('cos')"> cos </td>
           <td class="key opkey border-black" (click)="keyPress('sine')"> sine </td>
           <td class="key opkey border-black" (click)="keyPress('tan')"> tan </td>
-          <td class="key opkey border-black" (click)="keyPress('√')"> √ </td>
+          <td class="key opkey border-black" (click)="keyPress('√')"> <sup>n</sup> √ </td>
         </tr>
         <div class="space"></div>
         <tr class="rows-data">

@@ -18,8 +18,13 @@ body{
 }
 
 .msg-class {
-    font-size: 2.6rem;
+    font-size: 2.4rem;
     padding-top: 1rem;
+}
+
+.cube-root {
+    font-size: 1rem;
+    padding-right: 15px;
 }
 
 .bigfont {
@@ -42,12 +47,14 @@ body{
 
 .punch-keys-sect {
     margin-top: 10px;
+    width: 100%;
 }
 
 .table-of-data {
     height: 20rem;
     border-collapse: separate;
     border-spacing: 15px 15px;
+    width: 100%;
 }
 
 .space {
@@ -79,10 +86,6 @@ body{
 .numkey {
     background-color: #58595B;
     border-color: transparent;
-}
-
-.power__btn {
-
 }
 
 .power{
