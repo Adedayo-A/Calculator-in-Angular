@@ -38,13 +38,32 @@ export class AppComponent {
   lastInputedKey: string;
   cubeRoot: boolean;
   bigFont: boolean = true;
+  log: string;
+  logsArray = [];
+
+
+  myround(number, precision = 1000) {
+    var result = Math.round(number / precision) *  precision;
+    return result;
+}
 
   // ARITHMETIC OPERATIONS
   division(num1: number, num2: number, strResult: string) {
+    
     strResult = (num1 / num2).toString();
     console.log(strResult);
     if (strResult.length > 9) {
-      return strResult = strResult.substr(0, 9);
+      strResult = strResult.substr(0, 9);
+      this.log = `${num1} \\ ${num2} = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+      this.logsArray.push(this.log);
+      }
+      return strResult;
+    } else {
+      this.log = `${num1} \\ ${num2} = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+        this.logsArray.push(this.log);
+      }
     }
     return strResult;
   }
@@ -57,6 +76,10 @@ export class AppComponent {
       this.bigFont = false;
       return strResult = "Error..range exceeded";
     } else {
+      this.log = ` ${num1} x ${num2} = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+        this.logsArray.push(this.log);
+      }
       this.maxRange = false;
       this.bigFont = true;
     }
@@ -65,26 +88,53 @@ export class AppComponent {
 
   subtraction(num1: number, num2: number, strResult: string) {
     strResult = (num1 - num2).toString();
+    this.log = ` ${ num1} - ${num2} = ${strResult}`;
+    if(this.logsArray.length <= 4) {
+      this.logsArray.push(this.log);
+    }
     console.log(strResult);
     return strResult;
   }
 
   addition(num1: number, num2: number, strResult: string) {
-    strResult = (num1 + num2).toString();
+
+    let result = num1 + num2;
+    result = this.myround(result, 6);
+    console.log(result);
+    strResult = (result).toString();
     console.log(strResult);
     if(strResult.length >= 10) {
-      this.maxRange = true;
-      this.bigFont = false;
-      return strResult = "Error..range exceeded";
+      this.log = ` ${ num1} + ${num2} = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+        this.logsArray.push(this.log);
+      }
+      strResult = Math.round(parseFloat(strResult)).toString();
+      return strResult;
     } else {
-      this.maxRange = false;
-      this.bigFont = true;
+      this.log = ` ${ num1} + ${num2} = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+        this.logsArray.push(this.log);
+      }
     }
     return strResult;
   }
 
   percentage(num1: number, strResult: string) {
-    return strResult = (num1 / 100).toString();
+    strResult = (num1 / 100).toString();
+    if(strResult.length > 10) {
+      strResult = strResult.substr(0, 9);
+      this.log = ` ${num1}% = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+        this.logsArray.push(this.log);
+        }
+      return strResult;
+    } else {
+      this.log = ` ${num1}% = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+        this.logsArray.push(this.log);
+      }
+    }
+    return strResult;
   }
 
   root(num1: number, strResult: string, num2: number) {
@@ -93,10 +143,17 @@ export class AppComponent {
     if(strResult.length >= 10) {
       this.maxRange = true;
       this.bigFont = false;
-      return strResult = strResult.substr(0, 9);
-
-      // return strResult = "Error..range exceeded";
+      strResult = strResult.substr(0, 9);
+      this.log = `${num2}√${num1} = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+        this.logsArray.push(this.log);
+      }
+      return strResult;
     } else {
+      this.log = `${num2}√${num1} = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+        this.logsArray.push(this.log);
+      }
       this.maxRange = false;
       this.bigFont = true;
     }
@@ -106,7 +163,17 @@ export class AppComponent {
   cos(num1: number, num2: number, strResult: string) {
     strResult = (num1 * Math.cos(num2)).toString();
     if(strResult.length >= 10) {
-      return strResult = strResult.substr(0, 9);
+      strResult = strResult.substr(0, 9);
+      this.log = ` ${ num1} cos ${num2} = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+        this.logsArray.push(this.log);
+      }
+      return strResult;
+    } else {
+      this.log = ` ${ num1} cos ${num2} = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+        this.logsArray.push(this.log);
+      }
     }
     return strResult;
   }
@@ -114,7 +181,17 @@ export class AppComponent {
   sine(num1: number, num2: number, strResult: string) {
     strResult = (num1 * Math.sin(num2)).toString();
     if(strResult.length >= 10) {
-      return strResult = strResult.substr(0, 9);
+      strResult = strResult.substr(0, 9);
+      this.log = ` ${ num1} sine ${num2} = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+        this.logsArray.push(this.log);
+      }
+      return strResult;
+    } else {
+      this.log = ` ${ num1} sine ${num2} = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+        this.logsArray.push(this.log);
+      }
     }
     return strResult;
   }
@@ -122,7 +199,17 @@ export class AppComponent {
   tan(num1: number, num2: number, strResult: string) {
     strResult = (num1 * Math.tan(num2)).toString();
     if(strResult.length >= 10) {
-      return strResult = strResult.substr(0, 9);
+      strResult = strResult.substr(0, 9);
+      this.log = ` ${ num1} tan ${num2} = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+        this.logsArray.push(this.log);
+      }
+      return strResult;
+    } else {
+      this.log = ` ${ num1} tan ${num2} = ${strResult}`;
+      if(this.logsArray.length <= 4) {
+        this.logsArray.push(this.log);
+      }
     }
     return strResult;
   }
@@ -144,12 +231,20 @@ resetResult() {
 }
 
 // ONCLICK OPERATIONS
-  keyPress(key: string) {
+  keyPress(key: any) {
     
     if(this.disabled === true) {
       this.resetResult();
       return false;
     }
+
+    const pattern = /[0-9]/;
+     const inputChar = String.fromCharCode(key.charCode);
+
+     if (!pattern.test(inputChar)) {    
+         // invalid character, prevent input
+         event.preventDefault();
+     }
 
     if (key === 'AC') {
       this.arithmeticOperator = false;
@@ -189,8 +284,6 @@ resetResult() {
     }
 
     if(this.inputText.includes('.') && key === '.') {
-      // this.maxRange = true;
-      // this.inputText = "Invalid Input";
       return;
     }
 
@@ -205,29 +298,31 @@ resetResult() {
       }
     }
 
-    if(key === '√') {
+    if(key === '√' && this.inputText.includes('√')) {
+      return;
+    } else if (key === '√' && this.inputText.includes('√') === false) {
       console.log('did sqroot got here');
       this.arithmeticSymbol = key;
-      this.bigFont = false;
-      this.cubeRoot = true;
-      console.log('cube root class = ', this.cubeRoot);
-      console.log('big font class = ', this.bigFont);
-
-    } else {
       this.bigFont = true;
     }
 
-    if(key === 'cos') {
+    if(key === 'cos' && this.inputText.includes('cos')) {
+      return;
+    } else if (key === 'cos' && this.inputText.includes('√') === false){
       console.log('did cos get here');
       this.arithmeticSymbol = key;
     }
 
-    if(key === 'sine') {
+    if(key === 'sine' && this.inputText.includes('sine')) {
+      return;
+    } else if (key === 'sine' && this.inputText.includes('√') === false) {
       console.log('did sine get here');
       this.arithmeticSymbol = key;
     }
 
-    if(key === 'tan') {
+    if(key === 'tan' && this.inputText.includes('tan')) {
+      return;
+    } else if (key === 'tan' && this.inputText.includes('√') === false) {
       console.log('did cos get here');
       this.arithmeticSymbol = key;
     }
@@ -290,39 +385,27 @@ resetResult() {
       this.disabled = false;
       this.maxRange = false;
       this.bigFont = true;
+      this.logsArray.length = 0;
       this.arithmeticSymbol = '';
       return this.inputText = "0";
     }
     else if (this.inputText !== '') {
       this.disabled = true;
+      this.logsArray.length = 0;
       return this.inputText = '';
     }
   }
 
   getAnswer() {
+
+    console.log('object', this.inputText);
     let lastChar = this.inputText[this.inputText.length - 1];
     if(this.disabled === true) {
       this.resetResult();
       return false;
     }
-    
-    // this.numbers2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);  
-    if(this.lastInputedKey === 'number') {
-      let result;
-      result = this.numbers2 = parseFloat(this.inputText);
-      result = this.rootNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
-      // console.log("root num2 = ",this.rootNum2, "and input text =", this.inputText);
-      result = this.cosNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
-      result = this.sineNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
-      result = this.tanNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
-      console.log('result ==', result);
-      if(isNaN(result) ) {
-        return;
-      }
-    } else {
-      return;
-    }
 
+    console.log('arr symbol ==', this.arithmeticSymbol);
     
     if (this.arithmeticSymbol === '') {
       console.log('I got to arithmetic symbol = empty');
@@ -331,38 +414,98 @@ resetResult() {
      }
 
     if (this.arithmeticSymbol === '/') {
+      if(this.lastInputedKey === 'number') {
+        this.numbers2 = parseFloat(this.inputText);
+        if(isNaN(this.numbers2)) {
+          return;
+        }
+      } else {
+        return;
+      }
+
       this.inputText = this.division(this.numbers1, this.numbers2, this.inputText);
       this.resultGenerated = true;
-      this.arithmeticSymbol = '';
     } else if (this.arithmeticSymbol === 'x') {
+      if(this.lastInputedKey === 'number') {
+        this.numbers2 = parseFloat(this.inputText);
+        if(isNaN(this.numbers2)) {
+          return;
+        }
+      } else {
+        return;
+      }
       this.inputText = this.multiplication(this.numbers1, this.numbers2, this.inputText);
       this.resultGenerated = true;
-      this.arithmeticSymbol = '';
     } else if (this.arithmeticSymbol === '-') {
+      if(this.lastInputedKey === 'number') {
+        this.numbers2 = parseFloat(this.inputText);
+        if(isNaN(this.numbers2)) {
+          return;
+        }
+      } else {
+        return;
+      }
       this.inputText = this.subtraction(this.numbers1, this.numbers2, this.inputText);
       this.resultGenerated = true;
-      this.arithmeticSymbol = '';
     } else if (this.arithmeticSymbol === '+') {
+      if(this.lastInputedKey === 'number') {
+        this.numbers2 = parseFloat(this.inputText);
+        if(isNaN(this.numbers2)) {
+          return;
+        }
+      } else {
+        return;
+      }
       this.inputText = this.addition(this.numbers1, this.numbers2, this.inputText);
       this.resultGenerated = true;
-      this.arithmeticSymbol = '';
     } else if(this.arithmeticSymbol === '√') {
+      if(this.lastInputedKey === 'number') {
+        this.rootNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
+        if(isNaN(this.rootNum2)) {
+          return;
+        }
+      } else {
+        return;
+      }
       console.log('sqroot nums are ', this.rootNum1, this.rootNum2)
       this.inputText = this.root(this.rootNum2, this.inputText, this.rootNum1);
       this.resultGenerated = true;
       this.arithmeticSymbol = '';
     } else if(this.arithmeticSymbol === 'cos') {
+      if(this.lastInputedKey === 'number') {
+        this.cosNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
+        if(isNaN(this.cosNum2)) {
+          return;
+        }
+      } else {
+        return;
+      }
       this.inputText = this.cos(this.cosNum1, this.cosNum2, this.inputText);
       this.resultGenerated = true;
       this.arithmeticSymbol = '';
     } else if(this.arithmeticSymbol === 'sine') {
+      if(this.lastInputedKey === 'number') {
+        this.sineNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
+        console.log('sine num 2 ==', this.sineNum2);
+        if(isNaN(this.sineNum2)) {
+          return;
+        }
+      } else {
+        return;
+      }
       this.inputText = this.sine(this.sineNum1, this.sineNum2, this.inputText);
       this.resultGenerated = true;
-      this.arithmeticSymbol = '';
     } else if(this.arithmeticSymbol === 'tan') {
+      if(this.lastInputedKey === 'number') {
+        this.tanNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
+        if(isNaN(this.tanNum2)) {
+          return;
+        }
+      } else {
+        return;
+      }
       this.inputText = this.tan(this.tanNum1, this.tanNum2, this.inputText);
       this.resultGenerated = true;
-      this.arithmeticSymbol = '';
     } else {
       this.inputText = "invalid operation";
       this.resultGenerated = true;
@@ -407,4 +550,20 @@ resetResult() {
 
     // <input type="text" maxlength="40" value="{{ inputText }}" class="display-screen">
 
+    // this.numbers2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);  
+    // if(this.lastInputedKey === 'number') {
+    //   let result;
+    //   result = this.numbers2 = parseFloat(this.inputText);
+    //   result = this.rootNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
+      // console.log("root num2 = ",this.rootNum2, "and input text =", this.inputText);
+    //   result = this.cosNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
+    //   result = this.sineNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
+    //   result = this.tanNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
+    //   console.log('result ==', result);
+    //   if(isNaN(this.numbers2) || isNaN(this.rootNum2) || isNaN(this.cosNum2) || isNaN(this.sineNum2) || isNaN(this) ) {
+    //     return;
+    //   }
+    // } else {
+    //   return;
+    // }
 

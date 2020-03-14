@@ -3,22 +3,79 @@ body{
 }
 
 .container {
-    margin-top: 10rem;
+    display: flex;
     max-width: 1440px;
-    width: 25%;
+    width: 43%;
+    margin: auto;
+    /* background-color: blueviolet; */
+}
+
+.display-container {
+    /* margin-top: 10rem; */
+    width: 60%;
     padding: 25px;
     display: flex;
     flex-direction: column;
     background: #2E2D33;
-    margin: auto;
     border: 1px solid;
     border-radius: 21px;
     box-shadow: 1px -5px 8px 3px #ccc;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/*** SECOND SCREEN ***/
+
+.logs__screen {
+    background-color: #2E2D33;
+    border: 1px solid;
+    border-radius: 21px;
+    width: 40%;
+}
+
+.screen__header-text {
+    color: white;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.screen__body {
+    padding: 0 5%;
+}
+
+.logs__table {
+    width: 100%;
+    /* margin: auto; */
+}
+
+.logs__column {
+    display: flex;
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 90%;
+    padding: 4%;
+    /* justify-content: space-around; */
+    margin: auto;
+    align-items: center;
+}
+
+.logs {
+    color: white;
+    text-align: right;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logs__index {
+    text-align: left;
+    color: white;
+    margin-right: 10px;
+}
+/***** SECOND SCREEN ENDS ******/
+
+
+
+/* FIRST SCREEN CONTINUES */
 .msg-class {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     padding-top: 1rem;
 }
 
@@ -71,6 +128,7 @@ body{
     border-radius: 5px;
     column-width: 200px;
     padding: 3px;
+    opacity: 0.8;
 }
 
 .border-black {
@@ -83,9 +141,13 @@ body{
     opacity: 1;
 }
 
-.numkey {
+.numkey, .percent__key {
     background-color: #58595B;
     border-color: transparent;
+}
+
+.numkey:active {
+    background-color: #841F27;
 }
 
 .power{
@@ -96,13 +158,17 @@ body{
     padding: 8px 0;
 }
 
-td {
+.rowsdata td {
     text-align: center;
 }
 
 .opkey {
     color: white;
 }
+
+.opkey:active {
+    background-color: yellow;
+  }
 
 .equalkey {
     color: white;
