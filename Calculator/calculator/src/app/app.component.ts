@@ -34,6 +34,7 @@ export class AppComponent {
   sineNum1: number
   sineNum2: number;
   tanNum2: number;
+  inMemory: number;
 
   // ARITHMETIC OPERATIONS
   division(num1: number, num2: number, strResult: string) {
@@ -134,6 +135,8 @@ resetResult() {
   keyPress(key: string) {
     
     console.log(this.disabled);
+    console.log('Range = ', this.maxRange);
+
     if(this.disabled === true) {
       this.resetResult();
       return false;
@@ -141,6 +144,7 @@ resetResult() {
 
     if (key === 'AC') {
       this.arithmeticOperator = false;
+      this.maxRange = false;
       this.resetResult();
       return this.inputText = '0';
     }
@@ -149,11 +153,12 @@ resetResult() {
       console.log('lastInput key', lastInputedKey);
       console.log('length is', this.inputText.length);
 
-      if(lastInputedKey === '/' || lastInputedKey === 'x' || lastInputedKey === '-' || lastInputedKey === '+' || this.inputText === '0') {
+      if(lastInputedKey === '/' || lastInputedKey === 'x' || lastInputedKey === '-' || lastInputedKey === '+') {
         return
       }
 
       this.numbers1 = parseFloat(this.inputText);
+      console.log('nos 1', this.numbers1);
       this.arithmeticSymbol = key;
       this.signCalled = true;
       if (key === '%' && this.inputText !== '0') {
@@ -163,37 +168,58 @@ resetResult() {
       return
     }
 
+    if(key === 'M+') {
+      if(this.inMemory.toString() !== '') {
+        this.inMemory = parseFloat(this.inputText);
+      } else {
+        this.inMemory = parseFloat(this.inputText);
+      }
+    }
 
-    if(this.inputText.startsWith('0')) {
-      this.inputText = '';
+    if(this.inputText.includes('.') && key === '.') {
+      this.maxRange = true;
+      return this.inputText = "Invalid Input";
+    }
+    // else {
+    //   this.maxRange = false;
+    // }
+
+    if(this.inputText.startsWith('0') && this.inputText.length === 1) {
+      if (key === '.') {
+        this.inputText = '0';
+        console.log("I got here");
+      }
+      else {
+        this.inputText = '';
+      }
     }
 
     if(key === '√') {
       console.log('did sqroot got here');
       this.sqrootNum1 = parseFloat(this.inputText) || 1;
       console.log('sqr root', this.sqrootNum1);
-      this.sqrRootSymbol = key;
+      this.arithmeticSymbol = key;
     }
 
     if(key === 'cos') {
       console.log('did cos get here');
       this.cosNum1 = parseFloat(this.inputText) || 1;
       console.log('cos first num', this.cosNum1);
-      this.cosSymbol = key;
+      this.arithmeticSymbol = key;
     }
 
     if(key === 'sine') {
       console.log('did sine get here');
       this.sineNum1 = parseFloat(this.inputText) || 1;
       console.log('cos first num', this.sineNum1);
-      this.sineSymbol = key;
+      this.arithmeticSymbol = key;
     }
 
     if(key === 'tan') {
       console.log('did cos get here');
       this.tanNum1 = parseFloat(this.inputText) || 1;
       console.log('tan val is ', this.tanNum1);
-      this.tanSymbol = key;
+      this.arithmeticSymbol = key;
     }
 
     if(this.inputText.length >= 10) {
@@ -232,6 +258,7 @@ resetResult() {
   power() {
     if(this.inputText === '') {
       this.disabled = false;
+      this.maxRange = false;
       return this.inputText = "0";
     }
     else if (this.inputText !== '') {
@@ -244,10 +271,10 @@ resetResult() {
   getAnswer() {
     // this.numbers2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
     this.numbers2 = parseFloat(this.inputText);
-    this.sqrootNum2 = parseFloat(this.inputText.split(this.sqrRootSymbol)[1]);
-    this.cosNum2 = parseFloat(this.inputText.split(this.cosSymbol)[1]);
-    this.sineNum2 = parseFloat(this.inputText.split(this.sineSymbol)[1]);
-    this.tanNum2 = parseFloat(this.inputText.split(this.tanSymbol)[1]);
+    this.sqrootNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
+    this.cosNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
+    this.sineNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
+    this.tanNum2 = parseFloat(this.inputText.split(this.arithmeticSymbol)[1]);
 
     console.log('cos Num 2' , this.cosNum2);
 
@@ -264,30 +291,25 @@ resetResult() {
     } else if (this.arithmeticSymbol === '+') {
       this.inputText = this.addition(this.numbers1, this.numbers2, this.inputText);
       this.resultGenerated = true;
-    } else {
-      this.inputText = "invalid operations";
-      this.resultGenerated = true;
-    }
-
-    if(this.sqrRootSymbol) {
+    } else if(this.arithmeticSymbol === '√') {
       this.inputText = this.sqrRoot(this.sqrootNum2, this.inputText, this.sqrootNum1)
-    }
-
-    if(this.cosSymbol) {
+    } else if(this.arithmeticSymbol === 'cos') {
       this.inputText = this.cos(this.cosNum1, this.cosNum2, this.inputText);
-    }
-
-    if(this.sineSymbol) {
+    } else if(this.arithmeticSymbol === 'sine') {
       this.inputText = this.sine(this.sineNum1, this.sineNum2, this.inputText);
-    }
-
-    if(this.tanSymbol) {
+    } else if(this.arithmeticSymbol === 'tan') {
       this.inputText = this.tan(this.tanNum1, this.tanNum2, this.inputText);
+    } else {
+      this.inputText = "invalid operation";
+      this.resultGenerated = true;
+      this.maxRange = true;
     }
   }
 }
 
 // UNNEEDED FUNCTIONS AFTER OPTIMIZATION
+
+// || this.inputText === '0'
 
 // if(this.inputText === '0') {
   //   this.btnClear = "AC";
