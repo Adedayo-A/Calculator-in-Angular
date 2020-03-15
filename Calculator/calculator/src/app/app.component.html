@@ -1,12 +1,13 @@
-<div class="container">
+<div class="container" tabindex="0" (keyup)="keyBoard($event)">
+  <div class="display-container" tabindex="0">
     <div [ngClass]="{'msg-class' : maxRange, 'bigfont' : bigFont === true}" class="display-screen">
       {{ inputText }}
     </div>
     <div class="punch-keys-sect">
       <table class="table-of-data">
         <tr class="rows-data">
-          <td class="key ackey border-black" (click)="keyPress('AC')"> MC </td>
-          <td class="key ackey border-black" (click)="keyPress('M+')"> M+ </td>
+          <td class="key ackey opkey border-black" (click)="keyPress('AC')"> MC </td>
+          <td class="key ackey opkey border-black" (click)="keyPress('M+')"> M+ </td>
           <td class="key opkey border-black" (click)="keyPress('/')">/</td>
           <td class="key opkey border-black" (click)="keyPress('x')"> x </td>
         </tr>
@@ -21,24 +22,24 @@
           <td class="key numkey" (click)="keyPress('7')">7</td>
           <td class="key numkey" (click)="keyPress('8')">8</td>
           <td class="key numkey" (click)="keyPress('9')">9</td>
-          <td class="key numkey" (click)="keyPress('-')">-</td>
+          <td class="key opkey numkey" (click)="keyPress('-')">-</td>
         </tr>
         <tr class="rows-data">
           <td class="key numkey" (click)="keyPress('4')">4</td>  
           <td class="key numkey" (click)="keyPress('5')">5</td>
           <td class="key numkey" (click)="keyPress('6')">6</td>
-          <td class="key numkey" (click)="keyPress('+')">+</td>
+          <td class="key opkey numkey" (click)="keyPress('+')">+</td>
         </tr>
         <tr class="rows-data">
           <td class="key numkey" (click)="keyPress('1')">1</td>
           <td class="key numkey" (click)="keyPress('2')">2</td>
           <td class="key numkey" (click)="keyPress('3')">3</td>
-          <td class="key equalkey" rowspan="2" (click)="getAnswer()"> = </td>
+          <td class="key opkey equalkey" rowspan="2" (click)="getAnswer()"> = </td>
         </tr>
         <tr class="rows-data">
           <td class="key numkey" (click)="keyPress('0')">0</td>
           <td class="key numkey" (click)="keyPress('.')">.</td>
-          <td class="key numkey" (click)="keyPress('%')"> % </td>
+          <td class="key opkey percent__key" (click)="keyPress('%')"> % </td>
         </tr>
         <tr></tr>
         <tr class="powerBtn">
@@ -47,8 +48,26 @@
           <td></td>
         </tr>
       </table>
-        <!-- <div class="key power" (click)="power()">
-          Power
-        </div> -->
     </div>
+  </div>
+
+  <div class="second__screen">
+    <div class="logs__screen">
+      <h2 class="screen__header-text"> HISTORY </h2>
+      <div *ngFor="let log of logsArray; let i=index" class="screen__body">
+        <table class="logs__table">
+          <tr>
+            <td class="logs__column">
+              <span class="logs__index"> {{ i + 1 }}: </span>
+              <span class="logs"> {{ log }} </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="inmemory__screen">
+      <h2 class="inmemory__header-text"> MEMORY </h2>
+      <div class="inmemory"> {{ inMemory }} </div>
+    </div>
+  </div>
 </div>
