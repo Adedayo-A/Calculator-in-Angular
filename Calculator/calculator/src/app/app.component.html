@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="display-container">
-    <div [ngClass]="{'msg-class' : maxRange, 'bigfont' : bigFont === true}" class="display-screen" (keypress)="keyPress($event)" inputmode="numeric">
+<div class="container" tabindex="0" (keyup)="keyBoard($event)">
+  <div class="display-container" tabindex="0">
+    <div [ngClass]="{'msg-class' : maxRange, 'bigfont' : bigFont === true}" class="display-screen">
       {{ inputText }}
     </div>
     <div class="punch-keys-sect">
@@ -48,22 +48,26 @@
           <td></td>
         </tr>
       </table>
-        <!-- <div class="key power" (click)="power()">
-          Power
-        </div> -->
     </div>
   </div>
-  <div class="logs__screen">
-    <h2 class="screen__header-text"> HISTORY </h2>
-    <div *ngFor="let log of logsArray; let i=index" class="screen__body">
-      <table class="logs__table">
-        <tr>
-          <td class="logs__column">
-            <span class="logs__index"> {{ i + 1 }}: </span>
-            <span class="logs"> {{ log }} </span>
-          </td>
-        </tr>
-      </table>
+
+  <div class="second__screen">
+    <div class="logs__screen">
+      <h2 class="screen__header-text"> HISTORY </h2>
+      <div *ngFor="let log of logsArray; let i=index" class="screen__body">
+        <table class="logs__table">
+          <tr>
+            <td class="logs__column">
+              <span class="logs__index"> {{ i + 1 }}: </span>
+              <span class="logs"> {{ log }} </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="inmemory__screen">
+      <h2 class="inmemory__header-text"> MEMORY </h2>
+      <div class="inmemory"> {{ inMemory }} </div>
     </div>
   </div>
 </div>

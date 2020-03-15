@@ -5,14 +5,14 @@ body{
 .container {
     display: flex;
     max-width: 1440px;
-    width: 43%;
+    width: 50%;
     margin: auto;
     /* background-color: blueviolet; */
 }
 
 .display-container {
     /* margin-top: 10rem; */
-    width: 60%;
+    width: 50%;
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -25,14 +25,20 @@ body{
 
 /*** SECOND SCREEN ***/
 
-.logs__screen {
-    background-color: #2E2D33;
+.second__screen {
+    display: flex;
+    width: 50%;
     border: 1px solid;
     border-radius: 21px;
-    width: 40%;
+    background-color: #2E2D33;
 }
 
-.screen__header-text {
+.logs__screen {
+    width: 50%;
+    border-right: 1px solid;
+}
+
+.screen__header-text, .inmemory__header-text {
     color: white;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -44,6 +50,8 @@ body{
 
 .logs__table {
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px 12px;
     /* margin: auto; */
 }
 
@@ -69,6 +77,20 @@ body{
     color: white;
     margin-right: 10px;
 }
+
+.inmemory__screen {
+    width: 50%;
+}
+
+.inmemory__header-text {
+    text-align: center;
+}
+
+.inmemory {
+    color: white;
+    text-align: center;
+}
+
 /***** SECOND SCREEN ENDS ******/
 
 
