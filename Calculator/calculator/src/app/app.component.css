@@ -27,7 +27,7 @@ body{
 
 /****** ANIMATIONS ******/
 
-.second__screen-show {
+/* .second__screen-show {
     display: flex;
     width: 50%;
     border: 1px solid;
@@ -58,20 +58,41 @@ body{
     25%  {z-index: -1;}
     50%  {z-index: -1;}
     100% {transform:translateX(-310px); z-index: -1;}
-}
+} */
 
-
-.staticClass {
+/* .staticClass {
     display: none;
-}
+} */
 
 /********* ANIMATIONS END **********/
-/* 'second__screen-hide' : !show, 'second__screen-show' : show,  */
 
-.logs__screen {
+.logs__screen-show {
+    width: 25%;
+    border-right: 1px solid;
+    animation: moveout 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moveout {
+    0%   {transform:translateX(-200px); z-index: -1;}
+    50%  {z-index: 1;}
+    100% {transform:translateX(0px);}
+}
+
+.logs__screen-hide {
     width: 50%;
     border-right: 1px solid;
+    animation: movein 1s ease-in-out;
+    animation-fill-mode: forwards;
 }
+
+@keyframes movein {
+    0%   {transform:translateX(0px); z-index: 1;}
+    25%  {z-index: -1;}
+    50%  {z-index: -1;}
+    100% {transform:translateX(-310px); z-index: -1;}
+}
+
 
 .screen__header-text, .inmemory__header-text {
     color: white;
@@ -113,9 +134,33 @@ body{
     margin-right: 10px;
 }
 
-.inmemory__screen {
-    width: 50%;
+.inmemory__screen-show {
+    width: 25%;
+    animation: moveout 1s ease-in-out;
+    animation-fill-mode: forwards;
 }
+
+@keyframes moveout {
+    0%   {transform:translateX(-200px);}
+    50%  {z-index: 1;}
+    100% {transform:translateX(0px);}
+}
+
+.inmemory__screen-hide {
+    width: 50%;
+    animation: movein 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes movein {
+    0%   {transform:translateX(0px); z-index: 1;}
+    25%  {z-index: 1;}
+    50%  {z-index: -1;}
+    100% {transform:translateX(-310px);}
+}
+
+
+
 
 .inmemory__header-text {
     text-align: center;

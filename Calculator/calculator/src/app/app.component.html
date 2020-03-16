@@ -57,8 +57,8 @@
     </div>
   </div>
 
-  <div [ngClass]="{'staticClass': count === 0,'second__screen-hide' : hide, 'second__screen-show' : show}">
-    <div class="logs__screen">
+  <!-- <div [ngClass]="{'staticClass': count === 0,'second__screen-hide' : hide, 'second__screen-show' : show}"> -->
+    <div [ngClass]="{'staticClass': countHist === 0,'logs__screen-hide' : hideHist, 'logs__screen-show' : showHist}" class="logs__screen">
       <h2 class="screen__header-text"> HISTORY </h2>
       <div *ngFor="let log of logsArray; let i=index" class="screen__body">
         <table class="logs__table">
@@ -71,9 +71,9 @@
         </table>
       </div>
     </div>
-    <div class="inmemory__screen">
+    <div [ngClass]="{'staticClass': countMem === 0,'inmemory__screen-hide' : hideMem, 'inmemory__screen-show' : showMem}" class="inmemory__screen">
       <h2 class="inmemory__header-text"> MEMORY </h2>
       <div class="inmemory"> {{ inMemory }} </div>
     </div>
-  </div>
+  <!-- </div> -->
 </div>

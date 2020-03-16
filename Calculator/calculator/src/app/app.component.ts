@@ -42,14 +42,19 @@ export class AppComponent implements OnInit {
   bigFont: boolean = true;
   log: string;
   logsArray = [];
-  show: boolean;
+  showHist: boolean;
   staticClass: boolean;
-  hide: boolean;
-  count: number;
+  hideHist: boolean;
+  countHist: number;
+  countMem: number;
+  showMem: boolean;
+  hideMem: boolean;
 
   ngOnInit() {
-    this.count = 0;
-    console.log(this.count);
+    this.countHist = 0;
+    console.log(this.countHist);
+    this.countMem = 0;
+    console.log(this.countMem);
   }
 
 
@@ -58,27 +63,34 @@ export class AppComponent implements OnInit {
     return result;
   }
 
-  toggleSlide() {
-    this.count++;
-    console.log(this.count);
-    if(this.count % 2 !== 0) {
-      console.log('yay');
-      this.show = true;
-      this.hide = false;
+  toggleSlideHistory() {
+    this.countHist++;
+    console.log(this.countHist);
+    if(this.countHist % 2 !== 0) {
+      console.log('yayHistory');
+      this.showHist = true;
+      this.hideHist = false;
     }
-    else if (this.count % 2 === 0) {
-      console.log('nay');
-      this.hide = true;
-      this.show = false;
+    else if (this.countHist % 2 === 0) {
+      console.log('nayHistory');
+      this.hideHist = true;
+      this.showHist = false;
     }
-    // if(this.show === true ) {
-    //   this.hide = true;
-    //   this.show = false;
-    // }
-    // else if (this.hide === true) {
-    //   this.show = true;
-    //   this.hide = false;
-    // }
+  }
+
+  toggleSlideMemory() {
+    this.countMem++;
+    console.log(this.countMem);
+    if(this.countMem % 2 !== 0) {
+      console.log('yayMemory');
+      this.showMem = true;
+      this.hideMem = false;
+    }
+    else if (this.countMem % 2 === 0) {
+      console.log('nayMemory');
+      this.hideMem = true;
+      this.showMem = false;
+    }
   }
 
   // ARITHMETIC OPERATIONS
@@ -394,8 +406,12 @@ keyBoard(event: any) {
       return;
     }
 
-    if(key === 'H' || key === 'M') {
-      return this.toggleSlide();
+    if(key === 'H') {
+      return this.toggleSlideHistory();
+    }
+
+    if(key === 'M') {
+      return this.toggleSlideMemory();
     }
 
 
@@ -498,16 +514,16 @@ keyBoard(event: any) {
       this.logsArray.length = 0;
       this.inMemory = 0;
       this.arithmeticSymbol = '';
-      this.count = 0;
+      this.countHist = 0;
+      this.countMem = 0;
       return this.inputText = "0";
     }
     else if (this.inputText !== '') {
       this.disabled = true;
       this.logsArray.length = 0;
       this.inMemory = null;
-      this.show = false;
-      this.hide = true;
-      this.count = 0;
+      this.countHist = 0;
+      this.countMem = 0;
       return this.inputText = '';
     }
   }
