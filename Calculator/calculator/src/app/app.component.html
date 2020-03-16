@@ -1,5 +1,5 @@
 <div class="container" tabindex="0" (keyup)="keyBoard($event)">
-  <div class="display-container" tabindex="0">
+  <div class="display-container">
     <div [ngClass]="{'msg-class' : maxRange, 'bigfont' : bigFont === true}" class="display-screen">
       {{ inputText }}
     </div>
@@ -43,11 +43,15 @@
         </tr>
         <tr></tr>
         <tr class="powerBtn">
-          <td></td>
           <td class="key power" colspan = '2' (click)="power()">
             <fa-icon [icon]="faPowerOff"></fa-icon>
           </td>
-          <td></td>
+          <td class="history__screen-control">
+            <div> H </div>
+          </td>
+          <td class="memory__screen-control">
+            <div> M </div>
+          </td>
         </tr>
       </table>
     </div>
