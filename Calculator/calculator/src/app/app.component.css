@@ -12,7 +12,6 @@ body{
 }
 
 .display-container {
-    /* margin-top: 10rem; */
     width: 50%;
     padding: 25px;
     display: flex;
@@ -26,13 +25,48 @@ body{
 
 /*** SECOND SCREEN ***/
 
-.second__screen {
+/****** ANIMATIONS ******/
+
+.second__screen-show {
     display: flex;
     width: 50%;
     border: 1px solid;
     border-radius: 21px;
     background-color: #2E2D33;
+    animation: moveout 1s ease-in-out;
+    animation-fill-mode: forwards;
 }
+
+@keyframes moveout {
+    0%   {transform:translateX(-200px); z-index: -1;}
+    50%  {z-index: -1;}
+    100% {transform:translateX(0px);display: block;}
+}
+
+.second__screen-hide {
+    display: flex;
+    width: 50%;
+    border: 1px solid;
+    border-radius: 21px;
+    background-color: #2E2D33;
+    animation: movein 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes movein {
+    0%   {transform:translateX(0px); z-index: 1; display: block;}
+    25%  {z-index: -1;}
+    50%  {z-index: -1;}
+    100% {transform:translateX(-310px); z-index: -1;}
+}
+
+
+.staticClass {
+    display: none;
+}
+
+/********* ANIMATIONS END **********/
+/* 'second__screen-hide' : !show, 'second__screen-show' : show,  */
 
 .logs__screen {
     width: 50%;

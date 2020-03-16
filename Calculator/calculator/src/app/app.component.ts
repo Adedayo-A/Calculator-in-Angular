@@ -7,7 +7,8 @@ import { faCoffee, faPowerOff } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  
   title = 'calculator';
   inputText: string = '';
   calcText: string;
@@ -41,12 +42,44 @@ export class AppComponent {
   bigFont: boolean = true;
   log: string;
   logsArray = [];
+  show: boolean;
+  staticClass: boolean;
+  hide: boolean;
+  count: number;
+
+  ngOnInit() {
+    this.count = 0;
+    console.log(this.count);
+  }
 
 
   myround(number, precision = 1000) {
     var result = Math.round(number / precision) *  precision;
     return result;
-}
+  }
+
+  toggleSlide() {
+    this.count++;
+    console.log(this.count);
+    if(this.count % 2 !== 0) {
+      console.log('yay');
+      this.show = true;
+      this.hide = false;
+    }
+    else if (this.count % 2 === 0) {
+      console.log('nay');
+      this.hide = true;
+      this.show = false;
+    }
+    // if(this.show === true ) {
+    //   this.hide = true;
+    //   this.show = false;
+    // }
+    // else if (this.hide === true) {
+    //   this.show = true;
+    //   this.hide = false;
+    // }
+  }
 
   // ARITHMETIC OPERATIONS
   division(num1: number, num2: number, strResult: string) {
@@ -361,6 +394,10 @@ keyBoard(event: any) {
       return;
     }
 
+    if(key === 'H' || key === 'M') {
+      return this.toggleSlide();
+    }
+
 
     if(this.inputText.startsWith('0') && this.inputText.length === 1) {
       if (key === '.') {
@@ -461,12 +498,16 @@ keyBoard(event: any) {
       this.logsArray.length = 0;
       this.inMemory = 0;
       this.arithmeticSymbol = '';
+      this.count = 0;
       return this.inputText = "0";
     }
     else if (this.inputText !== '') {
       this.disabled = true;
       this.logsArray.length = 0;
       this.inMemory = null;
+      this.show = false;
+      this.hide = true;
+      this.count = 0;
       return this.inputText = '';
     }
   }

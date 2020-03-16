@@ -46,18 +46,18 @@
           <td class="key power" colspan = '2' (click)="power()">
             <fa-icon [icon]="faPowerOff"></fa-icon>
           </td>
-          <td class="history__screen-control">
-            <div> H </div>
+          <td class="history__screen-control" (click)="keyPress('H')">
+            H
           </td>
-          <td class="memory__screen-control">
-            <div> M </div>
+          <td class="memory__screen-control" (click)="keyPress('M')">
+             M 
           </td>
         </tr>
       </table>
     </div>
   </div>
 
-  <div class="second__screen">
+  <div [ngClass]="{'staticClass': count === 0,'second__screen-hide' : hide, 'second__screen-show' : show}">
     <div class="logs__screen">
       <h2 class="screen__header-text"> HISTORY </h2>
       <div *ngFor="let log of logsArray; let i=index" class="screen__body">
