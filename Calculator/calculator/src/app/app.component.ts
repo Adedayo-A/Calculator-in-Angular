@@ -46,9 +46,11 @@ export class AppComponent implements OnInit {
   staticClass: boolean;
   hide: boolean;
   count: number;
+  eventCall: string;
 
   ngOnInit() {
     this.count = 0;
+    this.eventCall = "Show";
     console.log(this.count);
   }
 
@@ -65,11 +67,13 @@ export class AppComponent implements OnInit {
       console.log('yay');
       this.show = true;
       this.hide = false;
+      this.eventCall = "Hide";
     }
     else if (this.count % 2 === 0) {
       console.log('nay');
       this.hide = true;
       this.show = false;
+      this.eventCall = "Show";
     }
     // if(this.show === true ) {
     //   this.hide = true;
@@ -499,6 +503,7 @@ keyBoard(event: any) {
       this.inMemory = 0;
       this.arithmeticSymbol = '';
       this.count = 0;
+      this.eventCall = "Show";
       return this.inputText = "0";
     }
     else if (this.inputText !== '') {

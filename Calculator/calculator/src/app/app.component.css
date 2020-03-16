@@ -96,7 +96,6 @@ body{
     border-radius: 5px;
     width: 90%;
     padding: 4%;
-    /* justify-content: space-around; */
     margin: auto;
     align-items: center;
 }
@@ -218,11 +217,11 @@ body{
 
 .history__screen-control, .memory__screen-control {
     background-color: yellow;
+    filter: contrast(70%);
     text-align: center;
     border-color: transparent;
-    font-size: 1.2rem;
+    font-size: 0.7rem;
     padding: 8px 0;
-    opacity: 1;
     border-radius: 5px;
 }
 
