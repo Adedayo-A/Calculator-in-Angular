@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Calculator';
+    src: url('assets/fonts/Calculator.eot');
+    src: url('modules/scss/fonts/Calculator.eot');
+    src: url('../modules/scss/fonts/Calculator.eot?#iefix') format('embedded-opentype'),
+        url('../modules/scss/fonts/Calculator.woff2') format('woff2'),
+        url('../modules/scss/fonts/Calculator.woff') format('woff'),
+        url('../modules/scss/fonts/Calculator.ttf') format('truetype'),
+        url('../modules/scss/fonts/Calculator.svg#Calculator') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
