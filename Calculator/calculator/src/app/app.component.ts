@@ -1,6 +1,5 @@
 import { Component, ViewChild, OnInit, OnDestroy, ViewEncapsulation} from '@angular/core';
-// import { DOCUMENT } from '@angular/platform-browser';
-// import { threadId } from 'worker_threads';
+import { faCoffee, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +14,8 @@ export class AppComponent {
   arithmeticSymbol: string;
   numbers1: number;
   numbers2: number;
+  faCoffee = faCoffee;
+  faPowerOff = faPowerOff;
   // btnClear: string = 'AC';
   disabled: boolean = true;
   arithmeticOperator: boolean = false;
