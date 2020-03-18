@@ -12,7 +12,7 @@ body{
 }
 
 .display-container {
-    width: 52%;
+    width: 41%;
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -60,7 +60,7 @@ body{
 
 .second__screen-show-memory {
     position: relative;
-    width: 50%;
+    width: 48%;
     /* height: 300px; */
     /* margin: 0px auto 0; */
     border-radius: 21px;
@@ -137,8 +137,6 @@ body{
 .second__screen-join-memory-part {
     position: relative;
     width: 50%;
-    /* height: 300px; */
-    /* margin: 0px auto 0; */
     border-radius: 21px;
     background: #2E2D33;
     border: 1px solid;
@@ -150,6 +148,7 @@ body{
  }
 
 .second__screen-join-memory-part #two {
+    width: 25%;
     animation-name: joinMemory;
     animation-duration: 1s;
     animation-iteration-count: 1;
@@ -185,11 +184,9 @@ body{
 /**************HIDE MEMORY *****************/
  .second__screen-hide-memory {
     position: relative;
-    /* height: 300px; */
-    /* margin: 0px auto 0; */
+    width: 25%;
     border-radius: 21px;
     background: #2E2D33;
-
     border: 1px solid;
     box-shadow: inset 0 -2px 1px 0 rgba(255,255,255,.16), inset 0 0 0 2px rgba(0,0,0,.2);
     transform-style: preserve-3d;
@@ -199,19 +196,17 @@ body{
  }
 
 .second__screen-hide-memory #one {
-    width: 100px;
     text-align: center;
 }
 
 .second__screen-hide-memory #two {
+    width: 25%;
     animation-name: hideMemory;
     animation-duration: 1s;
     animation-iteration-count: 1;
     animation-play-state: play;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
-    visibility: visible;
-    width: 25%;
     text-align: center;
 }
 
@@ -221,40 +216,33 @@ body{
         width: 25%;
     }
 
-    35% {
-        visibility: hidden;
+    3% {
+        z-index: -1;
     }
    
    50% {
         transform: translateX(50px);
         z-index: -1;
         width: 10%;
-        visibility: hidden;
+        /* visibility: hidden; */
     }
 
-    65% {
-        visibility: hidden;
+    75% {
+        transform: translateX(25px);
     }
 
     100% {
         transform: translateX(0px);
-        visibility: hidden;
+        /* visibility: hidden; */
+        z-index: -2;
         width: 0%;
      }
  }
-
-.second__screen-hide-memory {
-    width: 25%;
-    text-align: center;
-}
 
 /************************ SHOW HISTORY *******************/
  
 .second__screen-show-history {
     position: relative;
-    /* width: 50%; */
-    /* height: 300px; */
-    /* margin: 0px auto 0; */
     border-radius: 21px;
     background: #2E2D33;
     border: 1px solid;
@@ -267,16 +255,19 @@ body{
     animation-iteration-count: 1;
     animation-play-state: play;
     animation-fill-mode: forwards;
-    animation-timing-function: linear;
+    animation-timing-function: ease-in-out;
     text-align: center;
+    z-index: 1;
  }
 
  @keyframes showHistory {
     0% {
-        transform: translateX(-30px);
+        transform: translateX(-175px);
+        z-index: -1;
     }
     100% {
        transform: translateX(0px);
+       z-index: -1;
     }
  }
 
@@ -289,41 +280,35 @@ body{
  
 .second__screen-hide-history {
     position: relative;
-    /* width: 50%; */
-    /* height: 300px; */
-    /* margin: 0px auto 0; */
+    width: 25%;
     border-radius: 21px;
     background: #2E2D33;
-    /* box-shadow: inset 0 -2px 1px 0 rgba(255,255,255,.16), inset 0 0 0 2px rgba(0,0,0,.2);
+    box-shadow: inset 0 -2px 1px 0 rgba(255,255,255,.16), inset 0 0 0 2px rgba(0,0,0,.2);
     transform-style: preserve-3d;
-    transform: perspective(1000px); */
+    transform: perspective(1000px);
     cursor: pointer;
+    text-align: center;
     animation-name: hideHistory;
     animation-duration: 1s;
     animation-iteration-count: 1;
     animation-play-state: play;
     animation-fill-mode: forwards;
-    animation-timing-function: linear;
-    text-align: center;
+    animation-timing-function: ease-in-out;
+ }
+
+ .second__screen-hide-history div {
+     /* visibility: visible; */
  }
 
  @keyframes hideHistory {
     0% {
         transform: translateX(0px);
-        /* transform: rotateY(30deg); */
+         z-index: -1;
     }
-    5% {
-        visibility: hidden;
-    }
-    50% {
-        transform: rotateY(70deg);
-        visibility: hidden;
-    }
+
     100% {
-       transform: translateX(-30px);
-       /* transform: rotateY(180deg); */
-       /* visibility: hidden; */
-       z-index: -2;
+        transform: translateX(-180px);
+        z-index: -1;
     }
  }
 
@@ -331,9 +316,6 @@ body{
  
 .second__screen-removeall {
     position: relative;
-    /* width: 50%; */
-    /* height: 300px; */
-    /* margin: 0px auto 0; */
     border-radius: 21px;
     background: #2E2D33;
     border: 1px solid;
@@ -721,10 +703,10 @@ body{
     display: flex;
     border: 1px solid white;
     border-radius: 5px;
-    width: 90%;
-    padding: 4%;
+    width: 91%;
+    padding: 9%;
     /* justify-content: space-around; */
-    margin: auto;
+    margin: 0 10px;
     align-items: center;
 }
 
@@ -768,7 +750,7 @@ body{
 }
 
 .bigfont {
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 .display-screen {
