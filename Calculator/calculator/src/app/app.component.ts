@@ -87,22 +87,29 @@ export class AppComponent implements OnInit {
     //   return 
     // }
 
-    if (this.showMem) {
+    if(this.hideHist === false) {
+      this.showHist = false;
+      this.hideHist = true;
+    }
+
+    if (this.showMem === true) {
       this.removeAll = true;
-      // this.showHist = false;
-      // this.hideHist = true;
-      // this.showMem = false;
       return;
     }
     else {
       this.removeAll = false;
+      this.hideHist = true;
     }
 
-    if(this.countHist % 2 !== 0) {
+    if(this.hideHist === true) {
       this.showHist = true;
-      this.hideHist = false;
-      return;
     }
+
+    // if(this.countHist % 2 !== 0) {
+    //   this.showHist = true;
+    //   this.hideHist = false;
+    //   return;
+    // }
 
     if(this.countHist % 2 === 0) {
       this.showHist = false;
@@ -266,19 +273,19 @@ export class AppComponent implements OnInit {
     if (strResult.length > 9) {
       strResult = strResult.substr(0, 9);
       this.log = `${num1} \\ ${num2} = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
-      } else if (this.logsArray.length < 5) {
+      } else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
       return strResult;
     } else {
       this.log = `${num1} \\ ${num2} = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
-      } else if (this.logsArray.length < 5) {
+      } else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
     }
@@ -294,10 +301,10 @@ export class AppComponent implements OnInit {
       return strResult = "Error..range exceeded";
     } else {
       this.log = ` ${num1} x ${num2} = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
-      } else if (this.logsArray.length < 5) {
+      } else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
       this.maxRange = false;
@@ -309,10 +316,10 @@ export class AppComponent implements OnInit {
   subtraction(num1: number, num2: number, strResult: string) {
     strResult = (num1 - num2).toString();
     this.log = ` ${ num1} - ${num2} = ${strResult}`;
-    if(this.logsArray.length === 5) {
+    if(this.logsArray.length === 3) {
       this.logsArray.pop();
       this.logsArray.unshift(this.log);
-    } else if (this.logsArray.length < 5) {
+    } else if (this.logsArray.length < 3) {
       this.logsArray.unshift(this.log);
     }
     console.log(strResult);
@@ -326,20 +333,20 @@ export class AppComponent implements OnInit {
     if(strResult.length >= 10) {
       strResult = Math.round(parseFloat(strResult)).toString();
       this.log = ` ${ num1} + ${num2} = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
-      }  else if (this.logsArray.length < 5) {
+      }  else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
       return strResult;
     } else {
       this.log = ` ${ num1} + ${num2} = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
       }
-      else if (this.logsArray.length < 5) {
+      else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
       return strResult;
@@ -360,19 +367,19 @@ export class AppComponent implements OnInit {
     if(strResult.length > 10) {
       strResult = strResult.substr(0, 9);
       this.log = ` ${num1}% = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
-      } else if (this.logsArray.length < 5) {
+      } else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
       return strResult;
     } else {
       this.log = ` ${num1}% = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
-      } else if (this.logsArray.length < 5) {
+      } else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
     }
@@ -387,19 +394,19 @@ export class AppComponent implements OnInit {
       this.bigFont = false;
       strResult = strResult.substr(0, 9);
       this.log = `${num2}√${num1} = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
-      } else if (this.logsArray.length < 5) {
+      } else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
       return strResult;
     } else {
       this.log = `${num2}√${num1} = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
-      } else if (this.logsArray.length < 5) {
+      } else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
       this.maxRange = false;
@@ -413,19 +420,19 @@ export class AppComponent implements OnInit {
     if(strResult.length >= 10) {
       strResult = strResult.substr(0, 9);
       this.log = ` ${ num1} cos ${num2} = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
-      } else if (this.logsArray.length < 5) {
+      } else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
       return strResult;
     } else {
       this.log = ` ${ num1} cos ${num2} = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
-      } else if (this.logsArray.length < 5) {
+      } else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
     }
@@ -437,19 +444,19 @@ export class AppComponent implements OnInit {
     if(strResult.length >= 10) {
       strResult = strResult.substr(0, 9);
       this.log = ` ${ num1} sine ${num2} = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
-      } else if (this.logsArray.length < 5) {
+      } else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
       return strResult;
     } else {
       this.log = ` ${ num1} sine ${num2} = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
-      } else if (this.logsArray.length < 5) {
+      } else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
     }
@@ -461,19 +468,19 @@ export class AppComponent implements OnInit {
     if(strResult.length >= 10) {
       strResult = strResult.substr(0, 9);
       this.log = ` ${ num1} tan ${num2} = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
-      } else if (this.logsArray.length < 5) {
+      } else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
       return strResult;
     } else {
       this.log = ` ${ num1} tan ${num2} = ${strResult}`;
-      if(this.logsArray.length === 5) {
+      if(this.logsArray.length === 3) {
         this.logsArray.pop();
         this.logsArray.unshift(this.log);
-      } else if (this.logsArray.length < 5) {
+      } else if (this.logsArray.length < 3) {
         this.logsArray.unshift(this.log);
       }
     }

@@ -3,6 +3,17 @@
     <div [ngClass]="{'msg-class' : maxRange, 'bigfont' : bigFont === true}" class="display-screen">
       {{ inputText }}
     </div>
+    <div class="in__screen">
+      <div class="in__screen-history">
+        <div *ngFor="let log of logsArray; let i=index">
+          <span class="logs__index"> {{ i + 1 }}: </span>
+          <span class="logs"> {{ log }} </span>
+        </div>
+      </div>
+      <div class="in__screen-memory">
+        {{ inMemory }}
+      </div>
+    </div>
     <div class="punch-keys-sect">
       <table class="table-of-data">
         <tr class="rows-data">
@@ -56,24 +67,27 @@
       </table>
     </div>
   </div>
-  <div [ngClass]="{'staticClass': staticCount === 0, 'second__screen-show-memory': showMem, 'second__screen-hide-memory' : hideMem, 'second__screen-join-memory-part' : joinMemoryPart,  'second__screen-show-history' : showHist, 'second__screen-hide-history' : hideHist, 'second__screen-join-memory-part-historytrue': joinMemorytoHistoryWhenHistoryIsTrue, 'second__screen-removeall': removeAll }" >
-    <div class="sibling" id="one">
-      <h2 class="screen__header-text"> HISTORY </h2>
-      <div *ngFor="let log of logsArray; let i=index" class="screen__body">
-        <table class="logs__table">
-          <tr>
-            <td class="logs__column">
-              <span class="logs__index"> {{ i + 1 }}: </span>
-              <span class="logs"> {{ log }} </span>
-            </td>
-          </tr>
-        </table>
-      </div>
+</div>
+
+
+
+<div [ngClass]="{'staticClass': staticCount === 0, 'second__screen-show-memory': showMem, 'second__screen-hide-memory' : hideMem, 'second__screen-join-memory-part' : joinMemoryPart,  'second__screen-show-history' : showHist, 'second__screen-hide-history' : hideHist, 'second__screen-join-memory-part-historytrue': joinMemorytoHistoryWhenHistoryIsTrue, 'second__screen-removeall': removeAll }" >
+  <div class="sibling" id="one">
+    <h2 class="screen__header-text"> HISTORY </h2>
+    <div *ngFor="let log of logsArray; let i=index" class="screen__body">
+      <table class="logs__table">
+        <tr>
+          <td class="logs__column">
+            <span class="logs__index"> {{ i + 1 }}: </span>
+            <span class="logs"> {{ log }} </span>
+          </td>
+        </tr>
+      </table>
     </div>
-    <div class="sibling" id="two">
-      <h2 class="inmemory__header-text"> MEMORY </h2>
-      <div class="inmemory"> {{ inMemory }} </div>
-    </div>
+  </div>
+  <div class="sibling" id="two">
+    <h2 class="inmemory__header-text"> MEMORY </h2>
+    <div class="inmemory"> {{ inMemory }} </div>
   </div>
 </div>
   <!-- [ngClass]="{'staticClass': staticCount === 0, 'second__screen-show-one' : showHist, 'second__screen-hide-one' : hideHist, 'second__screen-show-mem' : showMem, 'second__screen-hide-mem' : hideMem}" -->
