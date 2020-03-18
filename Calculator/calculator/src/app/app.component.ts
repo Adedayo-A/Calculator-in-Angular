@@ -66,6 +66,8 @@ export class AppComponent implements OnInit {
     console.log(this.count);
     this.showMem = false;
     this.showHist = false;
+    this.hideMem = false;
+    this.hideHist = false;
   }
 
 
@@ -75,187 +77,115 @@ export class AppComponent implements OnInit {
   }
 
   toggleSlideHistory() {
-    // this.hideHist = false;
-    // this.hideAll = false;
-    // this.hideMem = false;
 
     this.staticCount++;
     this.countMem = 0;
     this.countHist++;
-
-    // if(this.countHist === 0) {
-    //   return 
-    // }
-
-    if (this.showMem) {
-      this.removeAll = true;
-      // this.showHist = false;
-      // this.hideHist = true;
-      // this.showMem = false;
-      return;
-    }
-    else {
-      this.removeAll = false;
-    }
-
-    if(this.countHist % 2 !== 0) {
+    
+    if(this.hideHist === true) {
       this.showHist = true;
       this.hideHist = false;
+      console.log(5);
       return;
     }
-
-    if(this.countHist % 2 === 0) {
+    else if (this.showMem === true) {
+      this.removeAll = false;
       this.showHist = false;
       this.hideHist = true;
+      this.showMem = false;
+      console.log(1);
       return;
     }
+    else if (this.hideMem === true) {
+      this.removeAll = false;
+      this.hideMem = false;
+      this.showHist = false;
+      this.hideHist = true;
+      this.showMem = false;
+      console.log(9);
+      return;
+    }
+    else if(this.showHist === true) {
+      this.showHist = false;
+      this.hideHist = true;
+      console.log(6);
+      return;
+    }
+    else if(this.joinMemoryPart === true) {
+      console.log(4);
+      this.joinMemoryPart = false;
+      this.hideHist = true;   
+      return;
+    }
+    // else if(this.joinMemoryPart === true) {
+    //   console.log(4);
+    //   this.hideMem = true;     
+    //   return;
+    // }
+    else {
+      this.showHist = true;
+    }
 
-
-    // if(this.showMem === true) {
-    //   this.hideHist = true;
-    //   this.showMem = false;
-    //   return;
-    // }
-    // if (this.showHist === undefined) {
-    //   return this.showHist = true;
-    // }
-    // if(this.showHist === true) {
-    //   this.showHist = false;
-    //   this.hideHist = true;
-    //   return;
-    // }
-    
-    // if (this.showHist === false) {
-    //   this.showMem = true;
-    //   this.hideHist = false;
-    //   return;
-    // }
-    // console.log(this.countHist);
-    // if(this.countHist % 2 !== 0) {
-    //   this.showHist = true;
-    //   this.hideHist = false;
-    //   console.log('yayHistory show - ', this.showHist, 'yayHistory hide - ', this.hideHist);
-    // }
-    // else if (this.countHist % 2 === 0) {
-    //   console.log('nayHistory');
-    //   this.hideHist = true;
-    //   this.showHist = false;
-    //   console.log('yayHistory show - ', this.showHist, 'yayHistory hide - ', this.hideHist);
-    // }
   }
 
   toggleShowMemory() {
     this.staticCount++;
-    console.log(this.countMem);
 
-    
-    if(this.showMem === false && this.showHist === true) {
-      this.joinMemorytoHistoryWhenHistoryIsTrue = true;
+    if(this.showMem === true) {
+      console.log(1);
+      this.showMem = false;
+      this.hideMem = true;
+      this.joinMemoryPart = false;
+      this.hideHist = false;
+      this.joinMemorytoHistoryWhenHistoryIsTrue = false;
       return;
-    } else {
+    }
+    else if (this.showHist === true) {
+      console.log(2);
+      this.showHist = false;
+      this.showMem = false;
+      this.hideMem = false;
+      this.joinMemoryPart = true;
       this.joinMemorytoHistoryWhenHistoryIsTrue = false;
     }
 
-    if(this.showMem === true) {
-      console.log('show this');
+    else if (this.hideHist === true) {
+      console.log(2);
+      this.hideHist = false;
+      this.showHist = false;
+      this.showMem = true;
+      this.hideMem = false;
+      this.joinMemoryPart = false;
+      this.joinMemorytoHistoryWhenHistoryIsTrue = false;
+    }
+
+    else if(this.hideMem === true) {
+      console.log(3);
+      this.showMem = false;
+      this.hideMem = false;
+      this.joinMemoryPart = true;
+      this.joinMemorytoHistoryWhenHistoryIsTrue = false;
+      return;
+    }
+    else if(this.joinMemoryPart === true) {
+      console.log(4);
       this.showMem = false;
       this.hideMem = true;
-      this.countMem++;
+      this.joinMemoryPart = false;
+      this.joinMemorytoHistoryWhenHistoryIsTrue = false;
       return;
     }
-
-    if(this.showMem === false) {
-      console.log('show this');
-      this.showMem = true;
-      this.hideMem = false;
-      this.countMem++;
-      return;
-    }
-
-    if(this.showMem === false) {
-      this.joinMemoryPart = true;
-      console.log('2');
-      this.showMem = true;
-      this.hideMem = false;
-      this.hideHist = false;
-      this.countMem++;
-      return;
-    }
-
-    if(this.showMem === false && (this.countMem == 0) && this.showHist === false) {
-      this.hideHist = false;
-      console.log('3');
-      this.showMem = true;
-      this.hideMem = false;
-      this.countMem++;
-      return;
-    }
-    console.log(this.showMem);
-
-    if (this.countMem % 2 === 0 && this.hideHist === false) {
-      console.log('when will you get here?');
-      console.log('4');
-      this.hideMem = undefined;
-      this.countMem++;
-      this.joinMemoryPart = true;
-      return;
-    }
-
-    if (this.countMem % 2 !== 0) {
-      console.log('remove memory');
-      console.log('5');
+    else if(this.joinMemorytoHistoryWhenHistoryIsTrue === true) {
+      console.log(5);
       this.showMem = false;
-      this.hideMem = true;
-      this.countMem++;
+      this.hideMem = false;
+      this.joinMemoryPart = false;
+      this.joinMemorytoHistoryWhenHistoryIsTrue = false;
       return;
+    } else {
+      console.log(6);
+      this.showMem = true;
     }
-    // if (this.showMem === false) {
-    //   // this.hideMem = false;
-    //   this.showMem = true;
-    //   console.log(this.showMem);
-    //   return;
-    // }
-
-    // if (this.showMem === true) {
-    //   this.showMem = false;
-    //   this.hideMem = true;
-    // }
-
-
-    // if(this.showHist === true && this.showMem === undefined) {
-    //   return this.showMem = true;
-    // }
-
-    // if (this.showMem === false) {
-    //   this.showMem = true;
-    // }
-
-    // if(this.showMem === true) {
-    //   this.showMem = false;
-    //   this.hideMem = true;
-    //   return;
-    // }
-    // if(this.showAll === true) {
-    //   this.showAll = false;
-    //   this.hideAll = true;
-    //   return;
-    // }
-    // if (this.showAll === false && this.showMem === false) {
-    //   this.showAll = true;
-    //   return;
-    // }
-
-    // this.count++;
-    // if(this.count % 2 !== 0) {
-    //   console.log('yayMemory');
-    //   this.show = true;
-    //   this.hide = false;
-    // }
-    // else if (this.count % 2 === 0) {
-    //   console.log('nayMemory');
-    //   this.hide = true;
-    //   this.show = false;
-    // }
   }
 
   // ARITHMETIC OPERATIONS
@@ -692,6 +622,11 @@ keyBoard(event: any) {
       this.inMemory = null;
       this.countHist = 0;
       this.countMem = 0;
+      this.showHist = false;
+      this.showMem = false;
+      this.hideMem = false;
+      this.hideHist = false;
+      this.joinMemoryPart = false;
       return this.inputText = '';
     }
   }
