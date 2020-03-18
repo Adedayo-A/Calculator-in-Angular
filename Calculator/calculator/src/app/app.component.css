@@ -12,8 +12,8 @@ body{
 }
 
 .display-container {
-    width: 41%;
-    padding: 25px;
+    width: 50%;
+    padding: 25px 25px 10px 25px;
     display: flex;
     flex-direction: column;
     background: #2E2D33;
@@ -22,6 +22,33 @@ body{
     box-shadow: 1px -5px 8px 3px #ccc;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+
+/****** NEW DESIGN *********/
+.memory-case {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    padding: 2%;
+    border: 1px solid;
+    border-radius: 15px;
+    width: 40%;
+    /* margin: auto; */
+    margin-top: 15px;
+    margin-left: 13px;
+    background-color: #20a1f1;
+    background-color: #ff6600;
+    background-color: white;
+    border-color: transparent;
+}
+
+.memory-screen {
+    text-align: right;
+    font-family: digital;
+    font-size: 2rem;
+}
+/********* NEW DESIGN ENDS **********/
 
 .sibling {
     display: block;

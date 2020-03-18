@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
     this.showMem = false;
     this.showHist = false;
     this.hideMem = false;
-    this.hideHist = false;
+    this.hideHist = true;
   }
 
 
@@ -82,50 +82,15 @@ export class AppComponent implements OnInit {
     this.countMem = 0;
     this.countHist++;
     
-    if(this.hideHist === true) {
+    if(this.showHist === true) {
+      this.showHist = false;
+      this.hideHist = true;
+      return;
+    }
+    else if (this.hideHist === true) {
       this.showHist = true;
       this.hideHist = false;
-      console.log(5);
-      return;
     }
-    else if (this.showMem === true) {
-      this.removeAll = false;
-      this.showHist = false;
-      this.hideHist = true;
-      this.showMem = false;
-      console.log(1);
-      return;
-    }
-    else if (this.hideMem === true) {
-      this.removeAll = false;
-      this.hideMem = false;
-      this.showHist = false;
-      this.hideHist = true;
-      this.showMem = false;
-      console.log(9);
-      return;
-    }
-    else if(this.showHist === true) {
-      this.showHist = false;
-      this.hideHist = true;
-      console.log(6);
-      return;
-    }
-    else if(this.joinMemoryPart === true) {
-      console.log(4);
-      this.joinMemoryPart = false;
-      this.hideHist = true;   
-      return;
-    }
-    // else if(this.joinMemoryPart === true) {
-    //   console.log(4);
-    //   this.hideMem = true;     
-    //   return;
-    // }
-    else {
-      this.showHist = true;
-    }
-
   }
 
   toggleShowMemory() {
