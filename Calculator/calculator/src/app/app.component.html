@@ -56,9 +56,8 @@
       </table>
     </div>
   </div>
-
-  <!-- <div [ngClass]="{'staticClass': count === 0,'second__screen-hide' : hide, 'second__screen-show' : show}"> -->
-    <div [ngClass]="{'staticClass': countHist === 0,'logs__screen-hide' : hideHist, 'logs__screen-show' : showHist}" class="logs__screen">
+  <div [ngClass]="{'staticClass': staticCount === 0, 'second__screen-show-memory': showMem, 'second__screen-hide-memory' : hideMem, 'second__screen-join-memory-part' : joinMemoryPart,  'second__screen-show-history' : showHist, 'second__screen-hide-history' : hideHist, 'second__screen-join-memory-part-historytrue': joinMemorytoHistoryWhenHistoryIsTrue, 'second__screen-removeall': removeAll }" >
+    <div class="sibling" id="one">
       <h2 class="screen__header-text"> HISTORY </h2>
       <div *ngFor="let log of logsArray; let i=index" class="screen__body">
         <table class="logs__table">
@@ -71,9 +70,10 @@
         </table>
       </div>
     </div>
-    <div [ngClass]="{'staticClass': countMem === 0,'inmemory__screen-hide' : hideMem, 'inmemory__screen-show' : showMem}" class="inmemory__screen">
+    <div class="sibling" id="two">
       <h2 class="inmemory__header-text"> MEMORY </h2>
       <div class="inmemory"> {{ inMemory }} </div>
     </div>
-  <!-- </div> -->
+  </div>
 </div>
+  <!-- [ngClass]="{'staticClass': staticCount === 0, 'second__screen-show-one' : showHist, 'second__screen-hide-one' : hideHist, 'second__screen-show-mem' : showMem, 'second__screen-hide-mem' : hideMem}" -->

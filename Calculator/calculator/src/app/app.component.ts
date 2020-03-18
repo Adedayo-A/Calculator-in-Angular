@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, OnDestroy, ViewEncapsulation} from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy, ViewEncapsulation, ɵConsole} from '@angular/core';
 import { faCoffee, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -45,16 +45,27 @@ export class AppComponent implements OnInit {
   showHist: boolean;
   staticClass: boolean;
   hideHist: boolean;
+  hideAll: boolean;
+  showAll: boolean;
+  count: number;
   countHist: number;
   countMem: number;
   showMem: boolean;
   hideMem: boolean;
+  staticCount: any;
+  joinMemoryPart: boolean;
+  joinMemorytoHistoryWhenHistoryIsTrue: any;
+  removeAll: boolean;
 
   ngOnInit() {
     this.countHist = 0;
     console.log(this.countHist);
     this.countMem = 0;
     console.log(this.countMem);
+    this.staticCount = 0;
+    console.log(this.count);
+    this.showMem = false;
+    this.showHist = false;
   }
 
 
@@ -64,33 +75,187 @@ export class AppComponent implements OnInit {
   }
 
   toggleSlideHistory() {
+    // this.hideHist = false;
+    // this.hideAll = false;
+    // this.hideMem = false;
+
+    this.staticCount++;
+    this.countMem = 0;
     this.countHist++;
-    console.log(this.countHist);
+
+    // if(this.countHist === 0) {
+    //   return 
+    // }
+
+    if (this.showMem) {
+      this.removeAll = true;
+      // this.showHist = false;
+      // this.hideHist = true;
+      // this.showMem = false;
+      return;
+    }
+    else {
+      this.removeAll = false;
+    }
+
     if(this.countHist % 2 !== 0) {
-      console.log('yayHistory');
       this.showHist = true;
       this.hideHist = false;
+      return;
     }
-    else if (this.countHist % 2 === 0) {
-      console.log('nayHistory');
-      this.hideHist = true;
+
+    if(this.countHist % 2 === 0) {
       this.showHist = false;
+      this.hideHist = true;
+      return;
     }
+
+
+    // if(this.showMem === true) {
+    //   this.hideHist = true;
+    //   this.showMem = false;
+    //   return;
+    // }
+    // if (this.showHist === undefined) {
+    //   return this.showHist = true;
+    // }
+    // if(this.showHist === true) {
+    //   this.showHist = false;
+    //   this.hideHist = true;
+    //   return;
+    // }
+    
+    // if (this.showHist === false) {
+    //   this.showMem = true;
+    //   this.hideHist = false;
+    //   return;
+    // }
+    // console.log(this.countHist);
+    // if(this.countHist % 2 !== 0) {
+    //   this.showHist = true;
+    //   this.hideHist = false;
+    //   console.log('yayHistory show - ', this.showHist, 'yayHistory hide - ', this.hideHist);
+    // }
+    // else if (this.countHist % 2 === 0) {
+    //   console.log('nayHistory');
+    //   this.hideHist = true;
+    //   this.showHist = false;
+    //   console.log('yayHistory show - ', this.showHist, 'yayHistory hide - ', this.hideHist);
+    // }
   }
 
-  toggleSlideMemory() {
-    this.countMem++;
+  toggleShowMemory() {
+    this.staticCount++;
     console.log(this.countMem);
-    if(this.countMem % 2 !== 0) {
-      console.log('yayMemory');
+
+    
+    if(this.showMem === false && this.showHist === true) {
+      this.joinMemorytoHistoryWhenHistoryIsTrue = true;
+      return;
+    } else {
+      this.joinMemorytoHistoryWhenHistoryIsTrue = false;
+    }
+
+    if(this.showMem === true) {
+      console.log('show this');
+      this.showMem = false;
+      this.hideMem = true;
+      this.countMem++;
+      return;
+    }
+
+    if(this.showMem === false) {
+      console.log('show this');
       this.showMem = true;
       this.hideMem = false;
+      this.countMem++;
+      return;
     }
-    else if (this.countMem % 2 === 0) {
-      console.log('nayMemory');
-      this.hideMem = true;
+
+    if(this.showMem === false) {
+      this.joinMemoryPart = true;
+      console.log('2');
+      this.showMem = true;
+      this.hideMem = false;
+      this.hideHist = false;
+      this.countMem++;
+      return;
+    }
+
+    if(this.showMem === false && (this.countMem == 0) && this.showHist === false) {
+      this.hideHist = false;
+      console.log('3');
+      this.showMem = true;
+      this.hideMem = false;
+      this.countMem++;
+      return;
+    }
+    console.log(this.showMem);
+
+    if (this.countMem % 2 === 0 && this.hideHist === false) {
+      console.log('when will you get here?');
+      console.log('4');
+      this.hideMem = undefined;
+      this.countMem++;
+      this.joinMemoryPart = true;
+      return;
+    }
+
+    if (this.countMem % 2 !== 0) {
+      console.log('remove memory');
+      console.log('5');
       this.showMem = false;
+      this.hideMem = true;
+      this.countMem++;
+      return;
     }
+    // if (this.showMem === false) {
+    //   // this.hideMem = false;
+    //   this.showMem = true;
+    //   console.log(this.showMem);
+    //   return;
+    // }
+
+    // if (this.showMem === true) {
+    //   this.showMem = false;
+    //   this.hideMem = true;
+    // }
+
+
+    // if(this.showHist === true && this.showMem === undefined) {
+    //   return this.showMem = true;
+    // }
+
+    // if (this.showMem === false) {
+    //   this.showMem = true;
+    // }
+
+    // if(this.showMem === true) {
+    //   this.showMem = false;
+    //   this.hideMem = true;
+    //   return;
+    // }
+    // if(this.showAll === true) {
+    //   this.showAll = false;
+    //   this.hideAll = true;
+    //   return;
+    // }
+    // if (this.showAll === false && this.showMem === false) {
+    //   this.showAll = true;
+    //   return;
+    // }
+
+    // this.count++;
+    // if(this.count % 2 !== 0) {
+    //   console.log('yayMemory');
+    //   this.show = true;
+    //   this.hide = false;
+    // }
+    // else if (this.count % 2 === 0) {
+    //   console.log('nayMemory');
+    //   this.hide = true;
+    //   this.show = false;
+    // }
   }
 
   // ARITHMETIC OPERATIONS
@@ -407,11 +572,13 @@ keyBoard(event: any) {
     }
 
     if(key === 'H') {
-      return this.toggleSlideHistory();
+      this.toggleSlideHistory();
+      return;
     }
 
     if(key === 'M') {
-      return this.toggleSlideMemory();
+      this.toggleShowMemory();
+      return;
     }
 
 
@@ -516,6 +683,7 @@ keyBoard(event: any) {
       this.arithmeticSymbol = '';
       this.countHist = 0;
       this.countMem = 0;
+      this.count = 0;
       return this.inputText = "0";
     }
     else if (this.inputText !== '') {
