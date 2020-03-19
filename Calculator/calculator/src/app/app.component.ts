@@ -605,6 +605,8 @@ keyBoard(event: any) {
       return false;
     }
 
+    console.log('lastInputed', this.lastInputedKey);
+
     console.log('arr symbol ==', this.arithmeticSymbol);
     
     if (this.arithmeticSymbol === '') {
@@ -707,6 +709,9 @@ keyBoard(event: any) {
       this.inputText = this.tan(this.tanNum1, this.tanNum2, this.inputText);
       this.resultGenerated = true;
     } else {
+      if(this.lastInputedKey !== 'number') {
+        return;
+      }
       this.inputText = "invalid operation";
       this.resultGenerated = true;
       this.arithmeticSymbol = '';
