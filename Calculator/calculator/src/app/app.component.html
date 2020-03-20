@@ -3,6 +3,11 @@
     <div [ngClass]="{'msg-class' : maxRange, 'bigfont' : bigFont === true}" class="display-screen">
       {{ inputText }}
     </div>
+    <div class="memory-case">
+      <div class="memory-screen">
+        {{ inMemory }}
+      </div>
+    </div>
     <div class="punch-keys-sect">
       <table class="table-of-data">
         <tr class="rows-data">
@@ -46,19 +51,16 @@
           <td class="key power" colspan = '2' (click)="power()">
             <fa-icon [icon]="faPowerOff"></fa-icon>
           </td>
-          <td class="history__screen-control">
-            <div> H </div>
-          </td>
-          <td class="memory__screen-control">
-            <div> M </div>
+          <td></td>
+          <td class="history__screen-control" (click)="keyPress('H')">
+            H
           </td>
         </tr>
       </table>
     </div>
   </div>
-
-  <div class="second__screen">
-    <div class="logs__screen">
+  <div [ngClass]="{'staticClass': staticCount === 0, 'second__screen-show-history' : showHist, 'second__screen-hide-history' : hideHist}" >
+    <div class="sibling">
       <h2 class="screen__header-text"> HISTORY </h2>
       <div *ngFor="let log of logsArray; let i=index" class="screen__body">
         <table class="logs__table">
@@ -71,9 +73,6 @@
         </table>
       </div>
     </div>
-    <div class="inmemory__screen">
-      <h2 class="inmemory__header-text"> MEMORY </h2>
-      <div class="inmemory"> {{ inMemory }} </div>
-    </div>
   </div>
 </div>
+  <!-- [ngClass]="{'staticClass': staticCount === 0, 'second__screen-show-one' : showHist, 'second__screen-hide-one' : hideHist, 'second__screen-show-mem' : showMem, 'second__screen-hide-mem' : hideMem}" -->

@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, OnDestroy, ViewEncapsulation} from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy, ViewEncapsulation, ɵConsole} from '@angular/core';
 import { faCoffee, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,7 +7,8 @@ import { faCoffee, faPowerOff } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  
   title = 'calculator';
   inputText: string = '';
   calcText: string;
@@ -41,12 +42,116 @@ export class AppComponent {
   bigFont: boolean = true;
   log: string;
   logsArray = [];
+  showHist: boolean;
+  staticClass: boolean;
+  hideHist: boolean;
+  hideAll: boolean;
+  showAll: boolean;
+  count: number;
+  countHist: number;
+  countMem: number;
+  showMem: boolean;
+  hideMem: boolean;
+  staticCount: any;
+  joinMemoryPart: boolean;
+  joinMemorytoHistoryWhenHistoryIsTrue: any;
+  removeAll: boolean;
+
+  ngOnInit() {
+    this.countHist = 0;
+    console.log(this.countHist);
+    this.countMem = 0;
+    console.log(this.countMem);
+    this.staticCount = 0;
+    console.log(this.count);
+    this.showMem = false;
+    this.showHist = false;
+    this.hideMem = false;
+    this.hideHist = true;
+  }
 
 
   myround(number, precision = 1000) {
     var result = Math.round(number / precision) *  precision;
     return result;
-}
+  }
+
+  toggleSlideHistory() {
+
+    this.staticCount++;
+    this.countMem = 0;
+    this.countHist++;
+    
+    if(this.showHist === true) {
+      this.showHist = false;
+      this.hideHist = true;
+      return;
+    }
+    else if (this.hideHist === true) {
+      this.showHist = true;
+      this.hideHist = false;
+    }
+  }
+
+  toggleShowMemory() {
+    this.staticCount++;
+
+    if(this.showMem === true) {
+      console.log(1);
+      this.showMem = false;
+      this.hideMem = true;
+      this.joinMemoryPart = false;
+      this.hideHist = false;
+      this.joinMemorytoHistoryWhenHistoryIsTrue = false;
+      return;
+    }
+    else if (this.showHist === true) {
+      console.log(2);
+      this.showHist = false;
+      this.showMem = false;
+      this.hideMem = false;
+      this.joinMemoryPart = true;
+      this.joinMemorytoHistoryWhenHistoryIsTrue = false;
+    }
+
+    else if (this.hideHist === true) {
+      console.log(2);
+      this.hideHist = false;
+      this.showHist = false;
+      this.showMem = true;
+      this.hideMem = false;
+      this.joinMemoryPart = false;
+      this.joinMemorytoHistoryWhenHistoryIsTrue = false;
+    }
+
+    else if(this.hideMem === true) {
+      console.log(3);
+      this.showMem = false;
+      this.hideMem = false;
+      this.joinMemoryPart = true;
+      this.joinMemorytoHistoryWhenHistoryIsTrue = false;
+      return;
+    }
+    else if(this.joinMemoryPart === true) {
+      console.log(4);
+      this.showMem = false;
+      this.hideMem = true;
+      this.joinMemoryPart = false;
+      this.joinMemorytoHistoryWhenHistoryIsTrue = false;
+      return;
+    }
+    else if(this.joinMemorytoHistoryWhenHistoryIsTrue === true) {
+      console.log(5);
+      this.showMem = false;
+      this.hideMem = false;
+      this.joinMemoryPart = false;
+      this.joinMemorytoHistoryWhenHistoryIsTrue = false;
+      return;
+    } else {
+      console.log(6);
+      this.showMem = true;
+    }
+  }
 
   // ARITHMETIC OPERATIONS
   division(num1: number, num2: number, strResult: string) {
@@ -361,6 +466,16 @@ keyBoard(event: any) {
       return;
     }
 
+    if(key === 'H') {
+      this.toggleSlideHistory();
+      return;
+    }
+
+    if(key === 'M') {
+      this.toggleShowMemory();
+      return;
+    }
+
 
     if(this.inputText.startsWith('0') && this.inputText.length === 1) {
       if (key === '.') {
@@ -461,12 +576,22 @@ keyBoard(event: any) {
       this.logsArray.length = 0;
       this.inMemory = 0;
       this.arithmeticSymbol = '';
+      this.countHist = 0;
+      this.countMem = 0;
+      this.count = 0;
       return this.inputText = "0";
     }
     else if (this.inputText !== '') {
       this.disabled = true;
       this.logsArray.length = 0;
       this.inMemory = null;
+      this.countHist = 0;
+      this.countMem = 0;
+      this.showHist = false;
+      this.showMem = false;
+      this.hideMem = false;
+      this.hideHist = false;
+      this.joinMemoryPart = false;
       return this.inputText = '';
     }
   }
@@ -479,6 +604,8 @@ keyBoard(event: any) {
       this.resetResult();
       return false;
     }
+
+    console.log('lastInputed', this.lastInputedKey);
 
     console.log('arr symbol ==', this.arithmeticSymbol);
     
@@ -582,6 +709,9 @@ keyBoard(event: any) {
       this.inputText = this.tan(this.tanNum1, this.tanNum2, this.inputText);
       this.resultGenerated = true;
     } else {
+      if(this.lastInputedKey !== 'number') {
+        return;
+      }
       this.inputText = "invalid operation";
       this.resultGenerated = true;
       this.arithmeticSymbol = '';
